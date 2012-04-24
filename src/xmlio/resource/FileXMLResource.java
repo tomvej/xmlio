@@ -10,8 +10,21 @@ import java.io.OutputStream;
 import xmlio.exceptions.XMLException;
 import xmlio.exceptions.XMLExceptionType;
 
+/**
+ * Stores and loads objects of designated type to and from one file.
+ * 
+ * @author <a href="mailto:xvejpust@fi.muni.cz">Tomáš Vejpustek</a>
+ * 
+ * @param <T>
+ *            Type of objects for storing and loading.
+ */
 public abstract class FileXMLResource<T> extends StreamXMLResource<T> {
 
+	/**
+	 * Defines access to file used for storing and loading of objects.
+	 * 
+	 * @return Path to storage file.
+	 */
 	protected abstract File getFile();
 
 	@Override

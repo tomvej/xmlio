@@ -36,19 +36,64 @@ import xmlio.XMLResource;
 import xmlio.exceptions.XMLException;
 import xmlio.exceptions.XMLExceptionType;
 
+/**
+ * Stores and loads object of designated type to and from a stream. Implements
+ * loading/storing machinery. When loading, validates the object against a given
+ * schema.
+ * 
+ * @author <a href="mailto:xvejpust@fi.muni.cz">Tomáš Vejpustek</a>
+ * 
+ * @param <T>
+ *            Type of objects for storing and loading.
+ */
 public abstract class StreamXMLResource<T> implements XMLResource<T> {
 	private static final String	SCHEMA_XMLNS	= "http://www.w3.org/2001/XMLSchema";
 
+	/**
+	 * Defines a way of access to input.
+	 * 
+	 * @return Newly opened input stream.
+	 * @throws XMLException
+	 *             when input could not be accessed.
+	 */
 	protected abstract InputStream openIpnut() throws XMLException;
 
+	/**
+	 * Defines a way of access to output.
+	 * 
+	 * @return Newly opened output stream.
+	 * @throws XMLException
+	 *             when output could not be accessed.
+	 */
 	protected abstract OutputStream openOutput() throws XMLException;
 
+	/**
+	 * Defines transformation of objects into XML objects.
+	 * 
+	 * @return Factory transforming objects of designated type into XML objects.
+	 */
 	protected abstract XMLFactory<T> getXMLFactory();
 
+	/**
+	 * Defines transformation of XML objects into objects.
+	 * 
+	 * @return Factory transforming XML objects into objects of designated type.
+	 */
 	protected abstract ObjectFactory<T> getObjectFactory();
 
+	/**
+	 * Defines XML namespace of given type. Should be consistent with
+	 * {@link StreamXMLResource#getXMLSchema()}.
+	 * 
+	 * @return Name of XML namespace.
+	 */
 	protected abstract String getXMLNamespace();
 
+	/**
+	 * Defines access to XML namespace of given type.
+	 * 
+	 * @return Path to XML schema associated with given type.
+	 */
 	protected abstract URL getXMLSchema();
 
 	private T	root;
