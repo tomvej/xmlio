@@ -21,6 +21,16 @@ import xmlio.exceptions.XMLExceptionType;
 public abstract class FileXMLResource<T> extends StreamXMLResource<T> {
 
 	/**
+	 * Specifies context of transformation between objects and XML.
+	 * 
+	 * @param context
+	 *            Context of transformation.
+	 */
+	public FileXMLResource(TransformationContext<T> context) {
+		super(context);
+	}
+
+	/**
 	 * Defines access to file used for storing and loading of objects.
 	 * 
 	 * @return Path to storage file.

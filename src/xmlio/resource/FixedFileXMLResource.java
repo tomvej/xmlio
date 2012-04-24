@@ -15,12 +15,15 @@ public abstract class FixedFileXMLResource<T> extends FileXMLResource<T> {
 	private File	target;
 
 	/**
-	 * Creates an XML resource with specified file.
+	 * Creates an XML resource with specified file and transformation context.
 	 * 
 	 * @param target
 	 *            File used for storage.
+	 * @param context
+	 *            Context of transformation between objects and XML
 	 */
-	public FixedFileXMLResource(File target) {
+	public FixedFileXMLResource(File target, TransformationContext<T> context) {
+		super(context);
 		this.target = target;
 	}
 

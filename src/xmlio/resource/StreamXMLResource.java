@@ -4,7 +4,6 @@ import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.URL;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -31,8 +30,6 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import xmlio.ObjectFactory;
-import xmlio.XMLFactory;
 import xmlio.XMLResource;
 import xmlio.exceptions.XMLException;
 import xmlio.exceptions.XMLExceptionType;
@@ -48,7 +45,21 @@ import xmlio.exceptions.XMLExceptionType;
  *            Type of objects for storing and loading.
  */
 public abstract class StreamXMLResource<T> implements XMLResource<T> {
-	private static final String	SCHEMA_XMLNS	= "http://www.w3.org/2001/XMLSchema";
+	private static final String			SCHEMA_XMLNS	= "http://www.w3.org/2001/XMLSchema";
+
+	private T							root;
+	private TransformationContext<T>	context;
+
+	/**
+	 * Specifies context of transformation between objects and XML.
+	 * 
+	 * @param context
+	 *            Context of transformation.
+	 * @see TransformationContext
+	 */
+	public StreamXMLResource(TransformationContext<T> context) {
+		this.context = context;
+	}
 
 	/**
 	 * Defines a way of access to input.
@@ -67,37 +78,6 @@ public abstract class StreamXMLResource<T> implements XMLResource<T> {
 	 *             when output could not be accessed.
 	 */
 	protected abstract OutputStream openOutput() throws XMLException;
-
-	/**
-	 * Defines transformation of objects into XML objects.
-	 * 
-	 * @return Factory transforming objects of designated type into XML objects.
-	 */
-	protected abstract XMLFactory<T> getXMLFactory();
-
-	/**
-	 * Defines transformation of XML objects into objects.
-	 * 
-	 * @return Factory transforming XML objects into objects of designated type.
-	 */
-	protected abstract ObjectFactory<T> getObjectFactory();
-
-	/**
-	 * Defines XML namespace of given type. Should be consistent with
-	 * {@link StreamXMLResource#getXMLSchema()}.
-	 * 
-	 * @return Name of XML namespace.
-	 */
-	protected abstract String getXMLNamespace();
-
-	/**
-	 * Defines access to XML namespace of given type.
-	 * 
-	 * @return Path to XML schema associated with given type.
-	 */
-	protected abstract URL getXMLSchema();
-
-	private T	root;
 
 	@Override
 	public T getRoot() {
@@ -118,7 +98,7 @@ public abstract class StreamXMLResource<T> implements XMLResource<T> {
 			Document input = validateDocument(doc, valid);
 			input.normalize();
 			removeEmptyNodes(input);
-			setRoot(getObjectFactory().get(input.getDocumentElement()));
+			setRoot(context.getObjectFactory().get(input.getDocumentElement()));
 		} finally {
 			closeStream(is);
 		}
@@ -128,7 +108,7 @@ public abstract class StreamXMLResource<T> implements XMLResource<T> {
 		SchemaFactory schFact = SchemaFactory.newInstance(SCHEMA_XMLNS);
 		Schema schema;
 		try {
-			schema = schFact.newSchema(getXMLSchema());
+			schema = schFact.newSchema(context.getXMLSchema());
 		} catch (SAXException saxe) {
 			throw new XMLException(XMLExceptionType.UNDEFINED, saxe);
 		}
@@ -199,7 +179,7 @@ public abstract class StreamXMLResource<T> implements XMLResource<T> {
 			throw new IllegalStateException("No object to be stored.");
 		}
 		Document doc = getDocumentBuilder().newDocument();
-		Element target = getXMLFactory().toXML(root, doc);
+		Element target = context.getXMLFactory().toXML(root, doc);
 		setNamespace(target);
 		doc.appendChild(target);
 
@@ -212,7 +192,7 @@ public abstract class StreamXMLResource<T> implements XMLResource<T> {
 	}
 
 	private void setNamespace(Element target) {
-		target.setAttribute("xmlns", getXMLNamespace());
+		target.setAttribute("xmlns", context.getXMLNamespace());
 	}
 
 	private Transformer getTransformer() throws XMLException {
