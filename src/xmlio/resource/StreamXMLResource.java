@@ -1,5 +1,6 @@
 package xmlio.resource;
 
+import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -119,11 +120,7 @@ public abstract class StreamXMLResource<T> implements XMLResource<T> {
 			removeEmptyNodes(input);
 			setRoot(getObjectFactory().get(input.getDocumentElement()));
 		} finally {
-			try {
-				is.close();
-			} catch (IOException ioe) {
-				throw new XMLException(XMLExceptionType.UNDEFINED, ioe);
-			}
+			closeStream(is);
 		}
 	}
 
@@ -210,11 +207,7 @@ public abstract class StreamXMLResource<T> implements XMLResource<T> {
 		try {
 			printDocument(getTransformer(), doc, os);
 		} finally {
-			try {
-				os.close();
-			} catch (IOException ioe) {
-				throw new XMLException(XMLExceptionType.UNDEFINED, ioe);
-			}
+			closeStream(os);
 		}
 	}
 
@@ -240,6 +233,14 @@ public abstract class StreamXMLResource<T> implements XMLResource<T> {
 			trans.transform(new DOMSource(doc), new StreamResult(os));
 		} catch (TransformerException te) {
 			throw new XMLException(XMLExceptionType.UNDEFINED, te);
+		}
+	}
+
+	private void closeStream(Closeable stream) throws XMLException {
+		try {
+			stream.close();
+		} catch (IOException ioe) {
+			throw new XMLException(XMLExceptionType.UNDEFINED, ioe);
 		}
 	}
 }
