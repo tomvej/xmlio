@@ -162,7 +162,7 @@ public abstract class StreamXMLResource<T> implements XMLResource<T> {
 		try {
 			valid.validate(new DOMSource(src), result);
 		} catch (SAXException saxe) {
-			throw new XMLException(XMLExceptionType.UNDEFINED, saxe);
+			throw new XMLException(XMLExceptionType.VALIDATION, saxe);
 		} catch (IOException ioe) {
 			throw new XMLException(XMLExceptionType.UNDEFINED, ioe);
 		}
@@ -240,7 +240,7 @@ public abstract class StreamXMLResource<T> implements XMLResource<T> {
 		try {
 			stream.close();
 		} catch (IOException ioe) {
-			throw new XMLException(XMLExceptionType.UNDEFINED, ioe);
+			throw new XMLException(XMLExceptionType.SRC_CLOSE, ioe);
 		}
 	}
 }

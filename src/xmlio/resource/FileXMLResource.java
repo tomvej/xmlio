@@ -32,7 +32,7 @@ public abstract class FileXMLResource<T> extends StreamXMLResource<T> {
 		try {
 			return new FileInputStream(getFile());
 		} catch (FileNotFoundException fnfe) {
-			throw new XMLException(XMLExceptionType.UNDEFINED, fnfe);
+			throw new XMLException(XMLExceptionType.SRC_OPEN, fnfe);
 		}
 	}
 
@@ -41,7 +41,7 @@ public abstract class FileXMLResource<T> extends StreamXMLResource<T> {
 		try {
 			return new FileOutputStream(getFile());
 		} catch (FileNotFoundException fnfe) {
-			throw new XMLException(XMLExceptionType.UNDEFINED, fnfe);
+			throw new XMLException(XMLExceptionType.SRC_OPEN, fnfe);
 		}
 	}
 }

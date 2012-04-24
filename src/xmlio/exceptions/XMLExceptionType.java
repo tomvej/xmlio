@@ -14,6 +14,10 @@ public enum XMLExceptionType {
 	/** XML document was invalid. */
 	VALIDATION,
 	/** Input XML was in wrong format (not included in validation). */
-	FORMAT;
+	FORMAT,
+	/** Source could not be opened. */
+	SRC_OPEN,
+	/** Source could not be closed. */
+	SRC_CLOSE;
 
 }
