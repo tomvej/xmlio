@@ -110,7 +110,7 @@ public abstract class StreamXMLResource<T> implements XMLResource<T> {
 		try {
 			schema = schFact.newSchema(context.getXMLSchema());
 		} catch (SAXException saxe) {
-			throw new XMLException(XMLExceptionType.UNDEFINED, saxe);
+			throw new XMLException(XMLExceptionType.SCHEMA, saxe);
 		}
 		return schema.newValidator();
 	}
@@ -130,9 +130,9 @@ public abstract class StreamXMLResource<T> implements XMLResource<T> {
 		try {
 			return docBuild.parse(is);
 		} catch (SAXException saxe) {
-			throw new XMLException(XMLExceptionType.UNDEFINED, saxe);
+			throw new XMLException(XMLExceptionType.PARSE, saxe);
 		} catch (IOException ioe) {
-			throw new XMLException(XMLExceptionType.UNDEFINED, ioe);
+			throw new XMLException(XMLExceptionType.PARSE_IO, ioe);
 		}
 	}
 
@@ -144,7 +144,7 @@ public abstract class StreamXMLResource<T> implements XMLResource<T> {
 		} catch (SAXException saxe) {
 			throw new XMLException(XMLExceptionType.VALIDATION, saxe);
 		} catch (IOException ioe) {
-			throw new XMLException(XMLExceptionType.UNDEFINED, ioe);
+			throw new XMLException(XMLExceptionType.VALIDATION_IO, ioe);
 		}
 		return (Document) result.getNode();
 	}
