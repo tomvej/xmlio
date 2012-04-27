@@ -1,5 +1,6 @@
 package xmlio.utils;
 
+import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -122,6 +123,14 @@ public class XMLUtils {
 			trans.transform(new DOMSource(doc), new StreamResult(os));
 		} catch (TransformerException te) {
 			throw new XMLException(XMLExceptionType.UNDEFINED, te);
+		}
+	}
+
+	public static void closeStream(Closeable stream) throws XMLException {
+		try {
+			stream.close();
+		} catch (IOException ioe) {
+			throw new XMLException(XMLExceptionType.SRC_CLOSE, ioe);
 		}
 	}
 

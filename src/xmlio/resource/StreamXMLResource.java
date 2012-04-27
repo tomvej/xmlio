@@ -1,7 +1,5 @@
 package xmlio.resource;
 
-import java.io.Closeable;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
@@ -12,7 +10,6 @@ import org.w3c.dom.Element;
 
 import xmlio.XMLResource;
 import xmlio.exceptions.XMLException;
-import xmlio.exceptions.XMLExceptionType;
 import xmlio.utils.XMLUtils;
 
 /**
@@ -80,7 +77,7 @@ public abstract class StreamXMLResource<T> implements XMLResource<T> {
 			XMLUtils.removeEmptyNodes(input);
 			setRoot(context.getObjectFactory().get(input.getDocumentElement()));
 		} finally {
-			closeStream(is);
+			XMLUtils.closeStream(is);
 		}
 	}
 
@@ -98,7 +95,7 @@ public abstract class StreamXMLResource<T> implements XMLResource<T> {
 		try {
 			XMLUtils.printDocument(XMLUtils.getTransformer(), doc, os);
 		} finally {
-			closeStream(os);
+			XMLUtils.closeStream(os);
 		}
 	}
 
@@ -106,11 +103,4 @@ public abstract class StreamXMLResource<T> implements XMLResource<T> {
 		target.setAttribute("xmlns", context.getXMLNamespace());
 	}
 
-	private void closeStream(Closeable stream) throws XMLException {
-		try {
-			stream.close();
-		} catch (IOException ioe) {
-			throw new XMLException(XMLExceptionType.SRC_CLOSE, ioe);
-		}
-	}
 }
