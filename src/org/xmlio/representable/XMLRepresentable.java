@@ -1,4 +1,4 @@
-package xmlio.representable;
+package org.xmlio.representable;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;

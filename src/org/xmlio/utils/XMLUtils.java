@@ -1,4 +1,4 @@
-package xmlio.utils;
+package org.xmlio.utils;
 
 import java.io.Closeable;
 import java.io.IOException;
@@ -29,9 +29,9 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+import org.xmlio.exceptions.XMLException;
+import org.xmlio.exceptions.XMLExceptionType;
 
-import xmlio.exceptions.XMLException;
-import xmlio.exceptions.XMLExceptionType;
 
 public class XMLUtils {
 	private static final String	SCHEMA_XMLNS	= "http://www.w3.org/2001/XMLSchema";

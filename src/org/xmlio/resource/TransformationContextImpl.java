@@ -1,4 +1,4 @@
-package xmlio.resource;
+package org.xmlio.resource;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -8,12 +8,12 @@ import java.net.URISyntaxException;
 import java.net.URL;
 
 import org.w3c.dom.Document;
+import org.xmlio.ObjectFactory;
+import org.xmlio.XMLFactory;
+import org.xmlio.exceptions.XMLException;
+import org.xmlio.exceptions.XMLExceptionType;
+import org.xmlio.utils.XMLUtils;
 
-import xmlio.ObjectFactory;
-import xmlio.XMLFactory;
-import xmlio.exceptions.XMLException;
-import xmlio.exceptions.XMLExceptionType;
-import xmlio.utils.XMLUtils;
 
 public class TransformationContextImpl<T> implements TransformationContext<T> {
 	private XMLFactory<T>		xmlFact;

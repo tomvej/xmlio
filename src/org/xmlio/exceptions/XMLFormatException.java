@@ -1,4 +1,4 @@
-package xmlio.exceptions;
+package org.xmlio.exceptions;
 
 /**
  * Exception thrown when given XML object cannot be transformed (i.e. is

@@ -1,4 +1,4 @@
-package xmlio.resource;
+package org.xmlio.resource;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -7,8 +7,9 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import xmlio.exceptions.XMLException;
-import xmlio.exceptions.XMLExceptionType;
+import org.xmlio.exceptions.XMLException;
+import org.xmlio.exceptions.XMLExceptionType;
+
 
 /**
  * Stores and loads objects of designated type to and from one file.

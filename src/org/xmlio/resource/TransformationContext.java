@@ -1,9 +1,10 @@
-package xmlio.resource;
+package org.xmlio.resource;
 
 import java.net.URL;
 
-import xmlio.ObjectFactory;
-import xmlio.XMLFactory;
+import org.xmlio.ObjectFactory;
+import org.xmlio.XMLFactory;
+
 
 /**
  * Defines all objects necessary to transform given class to and from XML:

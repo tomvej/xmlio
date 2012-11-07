@@ -1,6 +1,6 @@
-package xmlio.exceptions;
+package org.xmlio.exceptions;
 
-import xmlio.XMLResource;
+import org.xmlio.XMLResource;
 
 /**
  * Exception thrown during storing and loading of objects to and from XML.

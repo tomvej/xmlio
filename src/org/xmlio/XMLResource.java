@@ -1,6 +1,6 @@
-package xmlio;
+package org.xmlio;
 
-import xmlio.exceptions.XMLException;
+import org.xmlio.exceptions.XMLException;
 
 /**
  * External resource of objects in XML format. Contains exactly one object of

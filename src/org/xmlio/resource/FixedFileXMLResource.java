@@ -1,4 +1,4 @@
-package xmlio.resource;
+package org.xmlio.resource;
 
 import java.io.File;
 

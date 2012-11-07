@@ -1,9 +1,9 @@
-package xmlio.representable;
+package org.xmlio.representable;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.xmlio.XMLFactory;
 
-import xmlio.XMLFactory;
 
 /**
  * Defines transformation of objects into XML objects according to specification

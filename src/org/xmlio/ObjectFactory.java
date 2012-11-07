@@ -1,9 +1,9 @@
-package xmlio;
+package org.xmlio;
 
 import org.w3c.dom.Node;
+import org.xmlio.exceptions.XMLFormatException;
+import org.xmlio.exceptions.XMLInvalidException;
 
-import xmlio.exceptions.XMLFormatException;
-import xmlio.exceptions.XMLInvalidException;
 
 /**
  * Transforms XML objects to objects of designated type.

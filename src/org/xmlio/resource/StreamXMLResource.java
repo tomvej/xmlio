@@ -1,4 +1,4 @@
-package xmlio.resource;
+package org.xmlio.resource;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -7,10 +7,10 @@ import javax.xml.validation.Validator;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.xmlio.XMLResource;
+import org.xmlio.exceptions.XMLException;
+import org.xmlio.utils.XMLUtils;
 
-import xmlio.XMLResource;
-import xmlio.exceptions.XMLException;
-import xmlio.utils.XMLUtils;
 
 /**
  * Stores and loads object of designated type to and from a stream. Implements
