@@ -1,0 +1,1 @@
+Collection of routines used to convert Java XML DOM structures into XML output (e.g. file) and vice versa. Also contains wrappers used to hide details of such manipulation.
