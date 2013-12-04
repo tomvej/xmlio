@@ -16,10 +16,10 @@ import org.xmlio.utils.XMLUtils;
 
 
 public class TransformationContextImpl<T> implements TransformationContext<T> {
-	private XMLFactory<T>		xmlFact;
-	private ObjectFactory<T>	objFact;
-	private String				namespace;
-	private URL					schema;
+	private final XMLFactory<T>		xmlFact;
+	private final ObjectFactory<T>	objFact;
+	private final String				namespace;
+	private final URL					schema;
 
 	public TransformationContextImpl(XMLFactory<T> xmlFactory, ObjectFactory<T> objectFactory, URL schemaURL, String namespace) {
 		xmlFact = xmlFactory;

@@ -26,8 +26,8 @@ import com.sun.org.apache.xerces.internal.impl.dv.ValidatedInfo;
  */
 public abstract class StreamXMLResource<T> implements XMLResource<T> {
 
-	private T							root;
-	private TransformationContext<T>	context;
+	private T root;
+	private final TransformationContext<T> context;
 
 	/**
 	 * Specifies context of transformation between objects and XML.

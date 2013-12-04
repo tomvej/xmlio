@@ -12,7 +12,7 @@ import java.io.File;
  */
 public abstract class FixedFileXMLResource<T> extends FileXMLResource<T> {
 
-	private File	target;
+	private final File target;
 
 	/**
 	 * Creates an XML resource with specified file and transformation context.
