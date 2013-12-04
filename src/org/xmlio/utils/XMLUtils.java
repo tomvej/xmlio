@@ -35,6 +35,8 @@ import org.xmlio.exceptions.XMLExceptionType;
 
 public class XMLUtils {
 	private static final String	SCHEMA_XMLNS	= "http://www.w3.org/2001/XMLSchema";
+	
+	private XMLUtils() {}
 
 	public static DocumentBuilder getDocumentBuilder() throws XMLException {
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
