@@ -68,11 +68,24 @@ public abstract class StreamXMLResource<T> implements XMLResource<T> {
 
 	@Override
 	public void load() throws XMLException {
-		Validator valid = XMLUtils.getValidator(context.getXMLSchema());
+		if (context.getObjectFactory() == null) {
+			throw new UnsupportedOperationException("Load operation is not supported by transformation context.");
+		}
+		
+		Validator valid = null;
+		if (context.getXMLSchema() != null) { 
+			valid = XMLUtils.getValidator(context.getXMLSchema());
+		}
+		
 		InputStream is = openIpnut();
 		try {
 			Document doc = XMLUtils.parseDocument(is, XMLUtils.getDocumentBuilder());
-			Document input = XMLUtils.validateDocument(doc, valid);
+			Document input;
+			if (valid != null) {
+				input = XMLUtils.validateDocument(doc, valid);
+			} else {
+				input = doc;
+			}
 			input.normalize();
 			XMLUtils.removeEmptyNodes(input);
 			setRoot(context.getObjectFactory().get(input.getDocumentElement()));
@@ -83,6 +96,9 @@ public abstract class StreamXMLResource<T> implements XMLResource<T> {
 
 	@Override
 	public void store() throws XMLException {
+		if (context.getXMLFactory() == null) {
+			throw new UnsupportedOperationException("Store operation is not supported by transformation context.");
+		}
 		if (root == null) {
 			throw new IllegalStateException("No object to be stored.");
 		}
