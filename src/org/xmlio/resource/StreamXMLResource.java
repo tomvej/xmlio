@@ -11,6 +11,8 @@ import org.xmlio.XMLResource;
 import org.xmlio.exceptions.XMLException;
 import org.xmlio.utils.XMLUtils;
 
+import com.sun.org.apache.xerces.internal.impl.dv.ValidatedInfo;
+
 
 /**
  * Stores and loads object of designated type to and from a stream. Implements
@@ -35,6 +37,9 @@ public abstract class StreamXMLResource<T> implements XMLResource<T> {
 	 * @see TransformationContext
 	 */
 	public StreamXMLResource(TransformationContext<T> context) {
+		if (context == null) {
+			throw new NullPointerException("Transformation context cannot be null.");
+		}
 		this.context = context;
 	}
 

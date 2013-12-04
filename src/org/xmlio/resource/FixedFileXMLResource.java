@@ -24,6 +24,9 @@ public abstract class FixedFileXMLResource<T> extends FileXMLResource<T> {
 	 */
 	public FixedFileXMLResource(File target, TransformationContext<T> context) {
 		super(context);
+		if (target == null) {
+			throw new NullPointerException("Target file cannot be null.");
+		}
 		this.target = target;
 	}
 

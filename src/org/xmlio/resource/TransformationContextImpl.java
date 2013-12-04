@@ -25,15 +25,12 @@ public class TransformationContextImpl<T> implements TransformationContext<T> {
 		xmlFact = xmlFactory;
 		objFact = objectFactory;
 		schema = schemaURL;
-		this.namespace = namespace;
+		this.namespace = (namespace != null) ? namespace : "";
 	}
 
 	public TransformationContextImpl(XMLFactory<T> xmlFactory, ObjectFactory<T> objectFactory, URL schemaURL)
 			throws XMLException {
-		xmlFact = xmlFactory;
-		objFact = objectFactory;
-		schema = schemaURL;
-		namespace = getNamespaceFromSchema(schemaURL);
+		this(xmlFactory, objectFactory, schemaURL, getNamespaceFromSchema(schemaURL));
 	}
 
 	@Override
