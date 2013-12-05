@@ -1,9 +1,9 @@
-package org.xmlio.resource;
+package org.tomvej.xmlio.resource;
 
 import java.net.URL;
 
-import org.xmlio.ObjectFactory;
-import org.xmlio.XMLFactory;
+import org.tomvej.xmlio.ObjectFactory;
+import org.tomvej.xmlio.XMLFactory;
 
 
 /**

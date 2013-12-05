@@ -1,4 +1,4 @@
-package org.xmlio.resource;
+package org.tomvej.xmlio.resource;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -7,12 +7,12 @@ import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.net.URL;
 
+import org.tomvej.xmlio.ObjectFactory;
+import org.tomvej.xmlio.XMLFactory;
+import org.tomvej.xmlio.exceptions.XMLException;
+import org.tomvej.xmlio.exceptions.XMLExceptionType;
+import org.tomvej.xmlio.utils.XMLUtils;
 import org.w3c.dom.Document;
-import org.xmlio.ObjectFactory;
-import org.xmlio.XMLFactory;
-import org.xmlio.exceptions.XMLException;
-import org.xmlio.exceptions.XMLExceptionType;
-import org.xmlio.utils.XMLUtils;
 
 
 public class TransformationContextImpl<T> implements TransformationContext<T> {

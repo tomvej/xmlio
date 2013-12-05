@@ -1,4 +1,4 @@
-package org.xmlio.exceptions;
+package org.tomvej.xmlio.exceptions;
 
 /**
  * Enumerates possible types of {@link XMLException}.

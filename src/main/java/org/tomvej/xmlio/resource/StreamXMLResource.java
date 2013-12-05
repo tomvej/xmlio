@@ -1,15 +1,15 @@
-package org.xmlio.resource;
+package org.tomvej.xmlio.resource;
 
 import java.io.InputStream;
 import java.io.OutputStream;
 
 import javax.xml.validation.Validator;
 
+import org.tomvej.xmlio.XMLResource;
+import org.tomvej.xmlio.exceptions.XMLException;
+import org.tomvej.xmlio.utils.XMLUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.xmlio.XMLResource;
-import org.xmlio.exceptions.XMLException;
-import org.xmlio.utils.XMLUtils;
 
 import com.sun.org.apache.xerces.internal.impl.dv.ValidatedInfo;
 

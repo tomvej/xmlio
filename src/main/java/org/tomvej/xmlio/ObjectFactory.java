@@ -1,8 +1,8 @@
-package org.xmlio;
+package org.tomvej.xmlio;
 
+import org.tomvej.xmlio.exceptions.XMLFormatException;
+import org.tomvej.xmlio.exceptions.XMLInvalidException;
 import org.w3c.dom.Node;
-import org.xmlio.exceptions.XMLFormatException;
-import org.xmlio.exceptions.XMLInvalidException;
 
 
 /**

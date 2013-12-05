@@ -1,4 +1,4 @@
-package org.xmlio;
+package org.tomvej.xmlio;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;

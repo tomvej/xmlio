@@ -1,4 +1,4 @@
-package org.xmlio.exceptions;
+package org.tomvej.xmlio.exceptions;
 
 /**
  * Exception thrown when given XML object cannot be transformed (i.e. is

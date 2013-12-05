@@ -1,6 +1,6 @@
-package org.xmlio.exceptions;
+package org.tomvej.xmlio.exceptions;
 
-import org.xmlio.ObjectFactory;
+import org.tomvej.xmlio.ObjectFactory;
 
 /**
  * Thrown when argument expected by {@link ObjectFactory#get(org.w3c.dom.Node)}

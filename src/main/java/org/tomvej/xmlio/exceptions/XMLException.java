@@ -1,6 +1,6 @@
-package org.xmlio.exceptions;
+package org.tomvej.xmlio.exceptions;
 
-import org.xmlio.XMLResource;
+import org.tomvej.xmlio.XMLResource;
 
 /**
  * Exception thrown during storing and loading of objects to and from XML.

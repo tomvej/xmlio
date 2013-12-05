@@ -1,4 +1,4 @@
-package org.xmlio.utils;
+package org.tomvej.xmlio.utils;
 
 import java.io.Closeable;
 import java.io.IOException;
@@ -25,12 +25,12 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
+import org.tomvej.xmlio.exceptions.XMLException;
+import org.tomvej.xmlio.exceptions.XMLExceptionType;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-import org.xmlio.exceptions.XMLException;
-import org.xmlio.exceptions.XMLExceptionType;
 
 
 public class XMLUtils {

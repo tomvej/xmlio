@@ -1,8 +1,8 @@
-package org.xmlio.representable;
+package org.tomvej.xmlio.representable;
 
+import org.tomvej.xmlio.XMLFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.xmlio.XMLFactory;
 
 
 /**

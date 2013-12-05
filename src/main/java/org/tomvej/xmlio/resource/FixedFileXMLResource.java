@@ -1,4 +1,4 @@
-package org.xmlio.resource;
+package org.tomvej.xmlio.resource;
 
 import java.io.File;
 

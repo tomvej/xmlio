@@ -1,4 +1,4 @@
-package org.xmlio.resource;
+package org.tomvej.xmlio.resource;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -7,8 +7,8 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import org.xmlio.exceptions.XMLException;
-import org.xmlio.exceptions.XMLExceptionType;
+import org.tomvej.xmlio.exceptions.XMLException;
+import org.tomvej.xmlio.exceptions.XMLExceptionType;
 
 
 /**

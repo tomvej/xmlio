@@ -1,6 +1,6 @@
-package org.xmlio;
+package org.tomvej.xmlio;
 
-import org.xmlio.exceptions.XMLException;
+import org.tomvej.xmlio.exceptions.XMLException;
 
 /**
  * External resource of objects in XML format. Contains exactly one object of
