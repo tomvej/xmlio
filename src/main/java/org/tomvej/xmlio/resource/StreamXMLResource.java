@@ -11,9 +11,6 @@ import org.tomvej.xmlio.utils.XMLUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import com.sun.org.apache.xerces.internal.impl.dv.ValidatedInfo;
-
-
 /**
  * Stores and loads object of designated type to and from a stream. Implements
  * loading/storing machinery. When loading, validates the object against a given
@@ -38,7 +35,8 @@ public abstract class StreamXMLResource<T> implements XMLResource<T> {
 	 */
 	public StreamXMLResource(TransformationContext<T> context) {
 		if (context == null) {
-			throw new NullPointerException("Transformation context cannot be null.");
+			throw new NullPointerException(
+					"Transformation context cannot be null.");
 		}
 		this.context = context;
 	}
@@ -74,17 +72,19 @@ public abstract class StreamXMLResource<T> implements XMLResource<T> {
 	@Override
 	public void load() throws XMLException {
 		if (context.getObjectFactory() == null) {
-			throw new UnsupportedOperationException("Load operation is not supported by transformation context.");
+			throw new UnsupportedOperationException(
+					"Load operation is not supported by transformation context.");
 		}
-		
+
 		Validator valid = null;
-		if (context.getXMLSchema() != null) { 
+		if (context.getXMLSchema() != null) {
 			valid = XMLUtils.getValidator(context.getXMLSchema());
 		}
-		
+
 		InputStream is = openIpnut();
 		try {
-			Document doc = XMLUtils.parseDocument(is, XMLUtils.getDocumentBuilder());
+			Document doc = XMLUtils.parseDocument(is,
+					XMLUtils.getDocumentBuilder());
 			Document input;
 			if (valid != null) {
 				input = XMLUtils.validateDocument(doc, valid);
@@ -102,7 +102,8 @@ public abstract class StreamXMLResource<T> implements XMLResource<T> {
 	@Override
 	public void store() throws XMLException {
 		if (context.getXMLFactory() == null) {
-			throw new UnsupportedOperationException("Store operation is not supported by transformation context.");
+			throw new UnsupportedOperationException(
+					"Store operation is not supported by transformation context.");
 		}
 		if (root == null) {
 			throw new IllegalStateException("No object to be stored.");
