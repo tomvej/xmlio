@@ -13,11 +13,23 @@ import org.w3c.dom.NodeList;
  * 
  */
 public class DOMUtils {
+	/**
+	 * Converts {@link Node} into {@link Element} or throws
+	 * {@link XMLFormatException}.
+	 */
 	public static Element element(Node src) throws XMLFormatException {
 		return element(src, "Node `" + src.getNodeName()
 				+ "' is not an element.");
 	}
 
+	/**
+	 * Converts {@link Node} into {@link Element} or throws
+	 * {@link XMLFormatException}.
+	 * 
+	 * @param message
+	 *            Error message when target {@link Node} is not an
+	 *            {@link Element}.
+	 */
 	public static Element element(Node src, String message)
 			throws XMLFormatException {
 		if (src instanceof Element) {
@@ -27,12 +39,23 @@ public class DOMUtils {
 		}
 	}
 
+	/**
+	 * Return first child of element with given name or throws
+	 * {@link XMLFormatException} when there is no such child.
+	 */
 	public static Node childWithName(Node src, String name)
 			throws XMLFormatException {
 		return childWithName(src, name, "Node `" + src.getNodeName()
 				+ "' has no child `" + name + "'.");
 	}
 
+	/**
+	 * Return first child of element with given name or throws
+	 * {@link XMLFormatException} when there is no such child.
+	 * 
+	 * @param message
+	 *            Error message when there is no child of such name.
+	 */
 	public static Node childWithName(Node src, String name, String message)
 			throws XMLFormatException {
 		NodeList children = element(src).getElementsByTagName(name);
