@@ -33,7 +33,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 
-public class XMLUtils {
+public final class XMLUtils {
 	private static final String	SCHEMA_XMLNS	= "http://www.w3.org/2001/XMLSchema";
 	
 	private XMLUtils() {}
