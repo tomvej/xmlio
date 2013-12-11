@@ -41,6 +41,7 @@ public final class XMLUtils {
 	public static DocumentBuilder getDocumentBuilder() throws XMLException {
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		dbf.setNamespaceAware(true);
+		dbf.setValidating(false);
 		try {
 			return dbf.newDocumentBuilder();
 		} catch (ParserConfigurationException pce) {
