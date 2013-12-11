@@ -2,6 +2,8 @@ package org.tomvej.xmlio.resource;
 
 import java.io.File;
 
+import org.apache.commons.lang3.Validate;
+
 /**
  * Stores and loads objects of designated type from and to a single fixed file.
  * 
@@ -24,9 +26,7 @@ public abstract class FixedFileXMLResource<T> extends FileXMLResource<T> {
 	 */
 	public FixedFileXMLResource(File target, TransformationContext<T> context) {
 		super(context);
-		if (target == null) {
-			throw new NullPointerException("Target file cannot be null.");
-		}
+		Validate.notNull(target);
 		this.target = target;
 	}
 

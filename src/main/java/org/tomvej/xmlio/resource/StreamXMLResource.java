@@ -5,6 +5,7 @@ import java.io.OutputStream;
 
 import javax.xml.validation.Validator;
 
+import org.apache.commons.lang3.Validate;
 import org.tomvej.xmlio.XMLResource;
 import org.tomvej.xmlio.exceptions.XMLException;
 import org.tomvej.xmlio.utils.XMLUtils;
@@ -34,10 +35,7 @@ public abstract class StreamXMLResource<T> implements XMLResource<T> {
 	 * @see TransformationContext
 	 */
 	public StreamXMLResource(TransformationContext<T> context) {
-		if (context == null) {
-			throw new NullPointerException(
-					"Transformation context cannot be null.");
-		}
+		Validate.notNull(context);
 		this.context = context;
 	}
 

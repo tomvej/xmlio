@@ -2,6 +2,7 @@ package org.tomvej.xmlio.utils;
 
 import java.util.List;
 
+import org.apache.commons.lang3.Validate;
 import org.tomvej.xmlio.exceptions.XMLFormatException;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -20,6 +21,7 @@ public class DOMUtils {
 	 * {@link XMLFormatException}.
 	 */
 	public static Element element(Node src) throws XMLFormatException {
+		Validate.notNull(src);
 		return element(src, "Node `" + src.getNodeName()
 				+ "' is not an element.");
 	}
@@ -34,6 +36,7 @@ public class DOMUtils {
 	 */
 	public static Element element(Node src, String message)
 			throws XMLFormatException {
+		Validate.notNull(src);
 		if (src instanceof Element) {
 			return (Element) src;
 		} else {
@@ -69,6 +72,7 @@ public class DOMUtils {
 	 */
 	public static Node childWithName(Node src, String name, String message)
 			throws XMLFormatException {
+		Validate.notBlank(name);
 		try {
 			for (Node child : children(src)) {
 				if (name.equals(child.getNodeName())) {
