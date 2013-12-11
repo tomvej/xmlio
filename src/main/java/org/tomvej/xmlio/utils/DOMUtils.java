@@ -48,6 +48,10 @@ public class DOMUtils {
 		return new NodeListList(list);
 	}
 	
+	public static List<Node> children(Node target) throws XMLFormatException {
+		return nodeList(element(target).getChildNodes());
+	}
+	
 	/**
 	 * Return first child of element with given name or throws
 	 * {@link XMLFormatException} when there is no such child.
@@ -65,11 +69,16 @@ public class DOMUtils {
 	 */
 	public static Node childWithName(Node src, String name, String message)
 			throws XMLFormatException {
-		NodeList children = element(src).getElementsByTagName(name);
-		if (children == null || children.getLength() == 0) {
-			throw new XMLFormatException(message);
+		try {
+			for (Node child : children(src)) {
+				if (name.equals(child.getNodeName())) {
+					return child;
+				}
+			}
+		} catch (XMLFormatException xmlfe) {
+			throw new XMLFormatException(message, xmlfe);
 		}
-		return children.item(0);
+		throw new XMLFormatException(message);
 	}
 	
 	private DOMUtils() {
