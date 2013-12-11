@@ -1,5 +1,7 @@
 package org.tomvej.xmlio.utils;
 
+import java.util.List;
+
 import org.tomvej.xmlio.exceptions.XMLFormatException;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -38,7 +40,14 @@ public class DOMUtils {
 			throw new XMLFormatException(message);
 		}
 	}
-
+	
+	/**
+	 * Return unmodifiable {@link List} wrapper for {@link NodeList}.
+	 */
+	public static List<Node> nodeList(NodeList list) {
+		return new NodeListList(list);
+	}
+	
 	/**
 	 * Return first child of element with given name or throws
 	 * {@link XMLFormatException} when there is no such child.
@@ -52,9 +61,7 @@ public class DOMUtils {
 	/**
 	 * Return first child of element with given name or throws
 	 * {@link XMLFormatException} when there is no such child.
-	 * 
-	 * @param message
-	 *            Error message when there is no child of such name.
+	 * @param message Error message when there is no child of such name.
 	 */
 	public static Node childWithName(Node src, String name, String message)
 			throws XMLFormatException {
